@@ -14,10 +14,12 @@ public class Producer implements Runnable{
 	}
 	public void run(){
 		for(int x = 0;x<10;x++){
-			bq.offer(produce());
+			int number = produce();
 			try{
+				bq.put(number);
+				System.out.println("Producer just Produced:- "+number);
 				
-				Thread.sleep((int)(Math.random()*100));
+				Thread.sleep((int)(Math.random()*10));
 			}catch(Exception e){
 				e.printStackTrace();
 			}
